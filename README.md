@@ -35,6 +35,6 @@ We use the following datasets:
 * MODIS and Landsat NBR composites were projected to geographic projection (lat/lon, EPSG:4326) and exported as assets to speed up calculations in GEE and prevent computational timeouts
 
 ## Publication
-Liu T., Marlier M.E., Karambelas A.N., Jain M., Singh S., Singh M.K., Gautam, R., and DeFries R.S. (in review). Missing emissions from post-monsoon agricultural fires in northwestern India: regional limitations of MODIS burned area and active fire products.
+Liu T., Marlier M.E., Karambelas A.N., Jain M., Singh S., Singh M.K., Gautam, R., and DeFries R.S. (2019). Missing emissions from post-monsoon agricultural fires in northwestern India: regional limitations of MODIS burned area and active fire products. *Environ. Res. Commun.*, 1, 011007. https://doi.org/10.1088/2515-7620/ab056c
 
 EarthArXiv Preprint DOI: https://dx.doi.org/10.17605/OSF.IO/9JVAK
