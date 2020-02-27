@@ -1,20 +1,40 @@
-# ModL2T-Burned-Area
+# ModL2T Burned Area
 
 ModL2T: hybrid MODIS and Landsat algorithm for estimating post-monsoon burned area from agricultural fires in northwestern India
 
-This algorithm is based in Google Earth Engine (GEE) and R.
+This algorithm is based in Google Earth Engine (EE) and R.
 
-## GEE Repository
-For GEE Code Editor:
+## EE Repository
+For EE Code Editor:
 ```
 https://code.earthengine.google.com/?accept_repo=users/tl2581/ModL2T_BA
 ```
-Clone GEE Git Repository in Terminal:
+Clone EE Git Repository in Terminal:
 ```
 git clone https://earthengine.googlesource.com/users/tl2581/ModL2T_BA
 ```
 
-## Datasets
+## ModL2T Burned Area in EE
+The output dataset, ModL2T burned area, is annual and at 30-m spatial resolution.
+
+Example script:
+```
+// Read ModL2T burned area in Earth Engine
+var modl2tBA = ee.ImageCollection('projects/GlobalFires/IndiaAgFires/ModL2T_BA');
+
+// Example: filter 'modl2tBA' image collection for the year 2016
+// Each image pixel has confidence values from 1-6
+var modl2tBA_yrConf = modl2tBA.filter(ee.Filter.calendarRange(2016,2016,'year')).first();
+
+// We used only values > 1 in our final classification of burned area
+var modl2tBAyr = modl2tBA_yrConf.gt(1).selfMask();
+
+// Visualize burned area classification confidence
+Map.setCenter(76,30,7);
+Map.addLayer(modl2tBA_yrConf, {min: 1, max: 6, palette: ['yellow','orange','red']});
+```
+
+## Input Datasets
 We use the following datasets:
 
 #### MODIS, Collection 6:
@@ -37,4 +57,4 @@ We use the following datasets:
 ## Publication
 Liu T., Marlier M.E., Karambelas A.N., Jain M., Singh S., Singh M.K., Gautam, R., and DeFries R.S. (2019). Missing emissions from post-monsoon agricultural fires in northwestern India: regional limitations of MODIS burned area and active fire products. *Environ. Res. Commun.*, 1, 011007. https://doi.org/10.1088/2515-7620/ab056c
 
-EarthArXiv Preprint DOI: https://dx.doi.org/10.17605/OSF.IO/9JVAK
+EarthArXiv Preprint DOI: https://doi.org/10.17605/OSF.IO/9JVAK
