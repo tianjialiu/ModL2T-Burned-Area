@@ -10,7 +10,7 @@ var indiaShp = ee.FeatureCollection("projects/GlobalFires/IndiaAgFires/IND_adm1"
 // Last updated: September 30, 2018
 
 // Input Parameters:
-var params = require('users/tl2581/ModL2T_BA:InputParams.js');
+var params = require('users/embrslab/ModL2T_BA:InputParams.js');
 
 // Time Period
 var sYear = params.sYear; // Start Year

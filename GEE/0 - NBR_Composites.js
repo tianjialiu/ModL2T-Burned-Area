@@ -14,7 +14,7 @@ var modisTerraSR = ee.ImageCollection("MODIS/006/MOD09A1"),
 // Last updated: October 1, 2018
 
 // Input Parameters:
-var params = require('users/tl2581/ModL2T_BA:InputParams.js');
+var params = require('users/embrslab/ModL2T_BA:InputParams.js');
 var assetFolder = 'projects/GlobalFires/IndiaAgFires/';
 var outputRegion = ee.Geometry.Rectangle([73.7,27.5,77.7,32.7],'EPSG:4326',false);
 

@@ -13,7 +13,7 @@ var modl2t = ee.ImageCollection("projects/GlobalFires/IndiaAgFires/ModL2T_BA"),
 // Last updated: October 2, 2018
 
 // Input Parameters:
-var params = require('users/tl2581/ModL2T_BA:InputParams.js');
+var params = require('users/embrslab/ModL2T_BA:InputParams.js');
 
 // Time Period
 var iYear = 2016;

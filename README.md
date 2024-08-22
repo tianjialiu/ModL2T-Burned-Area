@@ -7,11 +7,11 @@ This algorithm is based in Google Earth Engine (EE) and R.
 ## EE Repository
 For EE Code Editor:
 ```
-https://code.earthengine.google.com/?accept_repo=users/tl2581/ModL2T_BA
+https://code.earthengine.google.com/?accept_repo=users/embrslab/ModL2T_BA
 ```
 Clone EE Git Repository in Terminal:
 ```
-git clone https://earthengine.googlesource.com/users/tl2581/ModL2T_BA
+git clone https://earthengine.googlesource.com/users/embrslab/ModL2T_BA
 ```
 
 ## ModL2T Burned Area in EE
@@ -50,6 +50,9 @@ We use the following datasets:
 
 ## Updates
 * March 10, 2018: MCD64A1 C6 added as a collection in GEE
+
+## Notes
+* Earlier versions of the Landsat collections used in this study are now deprecated in the GEE catalog
 
 ## Known Issues
 * MODIS and Landsat NBR composites were projected to geographic projection (lat/lon, EPSG:4326) and exported as assets to speed up calculations in GEE and prevent computational timeouts

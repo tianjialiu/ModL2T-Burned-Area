@@ -14,7 +14,7 @@ var indiaShp = ee.FeatureCollection("projects/GlobalFires/IndiaAgFires/IND_adm1"
 // Default visualization layer: Cross Comparison in 2016
 
 // Input Parameters:
-var params = require('users/tl2581/ModL2T_BA:InputParams.js');
+var params = require('users/embrslab/ModL2T_BA:InputParams.js');
 var outputRegion = ee.Geometry.Rectangle([73.7,27.5,77.7,32.7],'EPSG:4326',false);
 
 // Time Period
