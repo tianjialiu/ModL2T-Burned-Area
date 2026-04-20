@@ -57,11 +57,11 @@ for(var iYear = sYear; iYear <= eYear; iYear++) {
   
   // VIIRS active fires
   var viirsOct = ee.FeatureCollection('projects/GlobalFires/VNP14IMGML/VNP14IMGML_' +
-      iYear + '_10');
+      iYear + '10');
   var viirsNov = ee.FeatureCollection('projects/GlobalFires/VNP14IMGML/VNP14IMGML_' +
-      iYear + '_11');
+      iYear + '11');
   
-  var viirsPts = viirsOct.merge(viirsNov).filterMetadata('type','equals',0)
+  var viirsPts = viirsOct.merge(viirsNov).filter(ee.Filter.eq('Type',0))
     .filterBounds(Shp).map(bufferPts);
 
   var modl2tYr_Omission = modl2tYr.reduceRegions({
@@ -85,7 +85,7 @@ for(var iYear = sYear; iYear <= eYear; iYear++) {
       reducer: ee.Reducer.count().unweighted(),
       crs: 'EPSG:4326',
       scale: 30
-    }).toList(1,0).get(0);
+    }).first().get(0);
     
   var mcd64a1Yr_Commission = mcd64a1Yr.rename('MCD64A1')
     .addBands(mcd64a1Yr.clip(viirsPts).rename('MCD64A1_Agree'))
@@ -94,7 +94,7 @@ for(var iYear = sYear; iYear <= eYear; iYear++) {
       reducer: ee.Reducer.count().unweighted(),
       crs: modisScale.projection(),
       scale: modisScale.projection().nominalScale()
-    }).toList(1,0).get(0);
+    }).first().get(0);
   
   modl2t_Omission = ee.FeatureCollection(modl2t_Omission).merge(modl2tYr_Omission);
   mcd64a1_Omission = ee.FeatureCollection(mcd64a1_Omission).merge(mcd64a1Yr_Omission);
@@ -116,11 +116,11 @@ Export.table.toDrive({
 Export.table.toDrive({
   collection: ee.FeatureCollection(modl2t_Omission),
   description: 'ModL2T_Omission',
-  selectors: ['YYYYMMDD','HHMM','conf','count']
+  selectors: ['YYYYMMDD','HHMM','Confidence','count']
 });
 
 Export.table.toDrive({
   collection: ee.FeatureCollection(mcd64a1_Omission),
   description: 'MCD64A1_Omission',
-  selectors: ['YYYYMMDD','HHMM','conf','count']
+  selectors: ['YYYYMMDD','HHMM','Confidence','count']
 });
